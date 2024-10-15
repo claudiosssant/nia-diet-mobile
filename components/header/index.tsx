@@ -9,17 +9,23 @@ import {
 } from "react-native";
 import { colors } from "../../constants/colors";
 import { Feather } from "@expo/vector-icons";
-export function Header() {
+import { router } from "expo-router"
+
+interface HeaderProps {
+  title: string;
+}
+
+export function Header({title}: HeaderProps) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <View style={styles.navigation} >
-          <Pressable>
+          <Pressable onPress={()=> router.back()}>
             <Feather name="arrow-left" size={24} color="#fff" />
           </Pressable>
 
           <Text style={styles.text}>
-            Quem é você? <Feather name="loader" size={16} color="#fff" />
+            {title} <Feather name="loader" size={16} color="#fff" />
           </Text>
         </View>
       </View>
