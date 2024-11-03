@@ -2,10 +2,11 @@ import { Text, View, StyleSheet, Pressable, ScrollView } from "react-native";
 import { colors } from "../../constants/colors";
 import { Header } from "../../components/header";
 import { Select } from "../../components/input/select";
-import { Inputs } from "../../components/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useDataStore } from "../../store/data"
+import { router } from "expo-router";
 
 const schema = z.object({
   gender: z.string().min(1, { message: "Por favor, digite seu nome" }),
@@ -26,6 +27,7 @@ export default function Create() {
     resolver: zodResolver(schema),
   });
 
+  const setPageTwo = useDataStore(state => state.setPageTwo)
   const genderOptions = [
     { label: "Masculino", value: "masculino" },
     { label: "Feminino", value: "feminino" },
@@ -58,6 +60,16 @@ export default function Create() {
     { label: "Definição", value: "Definição" },
   ];
 
+  function handleCreate(data: FormData) {
+    setPageTwo({
+      gender: data.gender,
+      frequency: data.frequency,
+      objective: data.objective
+    })
+
+    router.push("/diet")
+  }
+
   return (
     <View style={styles.container}>
       <Header title="Fale mais de você" />
@@ -88,6 +100,10 @@ export default function Create() {
           error={errors.objective?.message}
           options={objectiveOptions}
         />
+
+        <Pressable onPress={handleSubmit(handleCreate)} style={styles.button}>
+          <Text style={styles.buttonText}>Avançar</Text>
+        </Pressable>
       </ScrollView>
     </View>
   );
@@ -107,5 +123,17 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontWeight: "bold",
     fontSize: 18,
+  },
+  button: {
+    backgroundColor: colors.orange,
+    height: 48,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 8,
+  },
+  buttonText: {
+    fontWeight: "bold",
+    color: "#FFFF",
+    fontSize: 20,
   },
 });

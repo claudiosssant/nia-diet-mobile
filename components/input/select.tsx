@@ -31,6 +31,7 @@ export function Select({
   options,
 }: SelectProps) {
   const [visible, setVisible] = useState(false);
+
   return (
     <View style={styles.container}>
       <Controller

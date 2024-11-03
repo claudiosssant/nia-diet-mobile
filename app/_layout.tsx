@@ -21,6 +21,13 @@ export default function RootLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="diet/index"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
+    
   );
 }
