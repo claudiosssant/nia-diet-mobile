@@ -7,7 +7,7 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import { colors } from "../../constants/colors";
+import { colors } from "../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
 import { router } from "expo-router"
 

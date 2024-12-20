@@ -1,11 +1,10 @@
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
-import { colors } from "../constants/colors";
+import { colors } from "../constants/Colors";
 import { Link } from "expo-router";
 
 export default function Index() {
   return (
     <View style={styles.screen}>
-      <Image source={require("../assets/images/nialogo.png")} />
       <Text style={styles.title}>NIA Diet</Text>
       <Text style={styles.subtitle}>Sua dieta personalizada</Text>
       <Link href="/stage" asChild>

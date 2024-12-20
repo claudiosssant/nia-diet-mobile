@@ -5,7 +5,7 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
-import { colors } from "../../constants/colors";
+import { colors } from "../../constants/Colors";
 import { Header } from "../../components/header";
 import { Inputs } from "../../components/input";
 import { z } from 'zod';

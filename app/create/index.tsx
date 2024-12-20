@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Pressable, ScrollView } from "react-native";
-import { colors } from "../../constants/colors";
+import { colors } from "../../constants/Colors";
 import { Header } from "../../components/header";
 import { Select } from "../../components/input/select";
 import { z } from "zod";
